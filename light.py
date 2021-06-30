@@ -5,12 +5,15 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
 class Light:
+    light_list = []
+
     def __init__(self, surface, corners, section, level):
         self.corners = corners
         self.surface = surface
         self.section = section
         self.level = level
         
+        Light.light_list.append(self)
 
     def turn_on(self):
         pygame.draw.polygon(self.surface, WHITE, self.corners, 5)
@@ -22,3 +25,6 @@ class Light:
 
     def change_color(self, color):
         pygame.draw.polygon(self.surface, color, self.corners, 5)
+
+
+

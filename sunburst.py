@@ -5,45 +5,42 @@ from light import Light
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-RED = (255, 0, 0)
-LIME = (0, 255, 0)
-BLUE = (0, 0, 255)
-FUCHSIA = (255, 0, 255)
-AQUA = (0, 255, 255)
-YELLOW = (255, 255, 0)
-OLIVE = (128, 128, 0)
-PURPLE = (128, 0, 128)
-TEAL = (0, 128, 128)
-ORANGE = (255, 128, 0)
-SALMON = (255, 0, 128)
-GREEN = (128, 255, 0)
-LT_PURPLE = (128, 0, 255)
-CORNFLOWER = (0, 128, 255)
-LT_GREEN = (0, 255, 128)
-
-colors = [RED, LIME, BLUE, FUCHSIA, AQUA, YELLOW, OLIVE, PURPLE,
-        TEAL, ORANGE, SALMON, GREEN, LT_PURPLE, CORNFLOWER, LT_GREEN]
+colors = {"red":(255, 0, 0), 
+        "lime":(0, 255, 0),
+        "blue":(0, 0, 255),
+        "fuchsia":(255, 0, 255),
+        "aqua":(0, 255, 255),
+        "yellow":(255, 255, 0),
+        "olive":(128, 128, 0),
+        "purple":(128, 0, 128),
+        "teal":(0, 128, 128),
+        "orange":(255, 128, 0),
+        "salmon":(255, 0, 128),
+        "green":(128, 255, 0),
+        "lt_purple":(128, 0, 255),
+        "cornflower":(0, 128, 255),
+        "lt_green":(0, 255, 128)}
 
 ab_outer_coordinates = [[45, 450],
-                        [80, 270],
-                        [195, 165],
-                        [390, 55],
-                        [580, 35],
-                        [595, 215],
-                        [515, 235],
-                        [450, 275],
-                        [410, 345],
-                        [400, 420]]
+                    [80, 270],
+                    [195, 165],
+                    [390, 55],
+                    [580, 35],
+                    [595, 215],
+                    [515, 235],
+                    [450, 275],
+                    [410, 345],
+                    [400, 420]]
 cd_outer_coordinates = [[610, 35],
-                        [795, 50],
-                        [995, 160],
-                        [1110, 285],
-                        [1150, 450],
-                        [795, 420],
-                        [790, 345,],
-                        [750, 275],
-                        [680,235],
-                        [605, 215]]
+                    [795, 50],
+                    [995, 160],
+                    [1110, 285],
+                    [1150, 450],
+                    [795, 420],
+                    [790, 345,],
+                    [750, 275],
+                    [680,235],
+                    [605, 215]]
 a_middle_coordinates = [[85, 410],
                     [120, 295],
                     [195, 210],
@@ -114,7 +111,10 @@ rect.center = width//2, height//2
 
 while running:
     for event in pygame.event.get():
-        if event.type == QUIT:
+        if event.type == KEYDOWN:
+            if event.key == K_ESCAPE:
+                running = False
+        elif event.type == QUIT:
             running = False
     
     screen.fill(BLACK)
@@ -131,12 +131,10 @@ while running:
     d2 = Light(screen, d_middle_coordinates, 'D', 'middle')
     d3 = Light(screen, d_inner_coordinates, 'D', 'inner')
 
-    lights = [ab1, cd1, a2, a3, b2, b3, c2, c3, d2, d3]
-
-    for light in lights:
+    for light in Light.light_list:
         Light.turn_on(light)
 
-    Light.change_color(ab1, RED)
+    Light.change_color(ab1, colors["red"])
 
     pygame.display.flip()
 
