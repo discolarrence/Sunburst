@@ -4,6 +4,7 @@ from light import Light
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+GRAY = (128, 128, 128)
 
 colors = {"red":(255, 0, 0), 
         "lime":(0, 255, 0),
@@ -118,7 +119,7 @@ while running:
             running = False
     
     screen.fill(BLACK)
-    # screen.blit(img, rect)
+    screen.blit(img, rect)
 
     ab1 = Light(screen, ab_outer_coordinates, 'AB', 'outer')
     cd1 = Light(screen, cd_outer_coordinates, 'CD', 'outer')
@@ -132,7 +133,7 @@ while running:
     d3 = Light(screen, d_inner_coordinates, 'D', 'inner')
 
     for light in Light.light_list:
-        Light.turn_on(light)
+        Light.turn_off(light)
 
     Light.change_color(ab1, colors["red"])
 

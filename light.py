@@ -1,8 +1,8 @@
 import pygame
 from pygame.locals import *
 
-BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+GRAY = (128, 128, 128)
 
 class Light:
     light_list = []
@@ -20,11 +20,21 @@ class Light:
 
 
     def turn_off(self):
-        pygame.draw.polygon(self.surface, BLACK, self.corners, 5)
+        pygame.draw.polygon(self.surface, GRAY, self.corners, 5)
 
 
     def change_color(self, color):
         pygame.draw.polygon(self.surface, color, self.corners, 5)
+
+    @property
+    def section(self):
+        return self._section
+
+    @property
+    def level(self):
+        return self._level
+    
+    
 
 
 
