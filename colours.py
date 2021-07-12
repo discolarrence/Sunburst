@@ -5,7 +5,6 @@ from pygame.locals import *
 
 class Colour(Color):
     colour_list = []
-    
 
     def __init__(self, red, green, blue):
         super().__init__(red, green, blue)

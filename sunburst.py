@@ -1,15 +1,17 @@
 import pygame
 import random
+from coordinates import list_of_coordinates_lists
 from colours import Colour
 from itertools import cycle
 from light import Light
 from pygame.locals import *
 
 
-
+#constants for background fill and "lights" off colors
 BLACK = (0, 0, 0)
 GRAY = (128, 128, 128)
 
+#coordinates for light shapes
 ab_outer_coordinates = [[45, 450],
                     [80, 270],
                     [195, 165],
@@ -87,19 +89,52 @@ d_inner_coordinates = [[970, 295],
                     [820, 365],
                     [800, 315]]
 
+# create color objects
+white = Colour(255, 255, 255)
+fuchsia = Colour(255, 0, 255)
+salmon = Colour(255, 0, 128)
+red = Colour(255, 0, 0)
+yellow = Colour(255, 255, 0)
+orange = Colour(255, 128, 0)
+olive = Colour(128, 128, 0)
+green = Colour(128, 255, 0)
+lime = Colour(0, 255, 0)
+teal = Colour(0, 128, 128)
+cornflower = Colour(0, 128, 255)
+aqua = Colour(0, 255, 255)
+lt_green = Colour(0, 255, 128)
+blue = Colour(0, 0, 255)
+lt_purple = Colour(128, 0, 255)
+purple = Colour(128, 0, 128)
+
 inner_colour = GRAY
 outer_colour = GRAY 
 middle_colour = GRAY
+
+def blink_all(light_list, color, time_between):
+    for light in light_list:
+        Light.turn_on(light, color)
+    pygame.time.wait(time_between)
+    for light in light_list:
+        Light.turn_on(light, color)
+    pygame.time.wait(time_between)
 
 pygame.init()
 width, height = 1200, 480
 screen = pygame.display.set_mode((width, height))
 running = True
 
-# img = pygame.image.load('sunburst7.jpg')
-# img.convert
-# rect = img.get_rect()
-# rect.center = width//2, height//2
+#create light shapes
+ab1 = Light(screen, ab_outer_coordinates, 'AB', 'outer')
+cd1 = Light(screen, cd_outer_coordinates, 'CD', 'outer')
+a2 = Light(screen, a_middle_coordinates, 'A', 'middle')
+a3 = Light(screen, a_inner_coordinates, 'A', 'inner')
+b2 = Light(screen, b_middle_coordinates, 'B', 'middle')
+b3 = Light(screen, b_inner_coordinates, 'B', 'inner')
+c2 = Light(screen, c_middle_coordinates, 'C', 'middle')
+c3 = Light(screen, c_inner_coordinates, 'C', 'inner')
+d2 = Light(screen, d_middle_coordinates, 'D', 'middle')
+d3 = Light(screen, d_inner_coordinates, 'D', 'inner')
 
 while running:
     for event in pygame.event.get():
@@ -110,51 +145,21 @@ while running:
             running = False
     
     screen.fill(BLACK)
-    
-    red = Colour(255, 0, 0)
-    lime = Colour(0, 255, 0)
-    blue = Colour(0, 0, 255)
-    fuchsia = Colour(255, 0, 255)
-    aqua = Colour(0, 255, 255)
-    yellow = Colour(255, 255, 0)
-    olive = Colour(128, 128, 0)
-    purple = Colour(128, 0, 128)
-    teal = Colour(0, 128, 128)
-    orange = Colour(255, 128, 0)
-    salmon = Colour(255, 0, 128)
-    green = Colour(128, 255, 0)
-    lt_purple = Colour(128, 0, 255)
-    cornflower = Colour(0, 128, 255)
-    lt_green = Colour(0, 255, 128)
-    white = Colour(255, 255, 255)
-
-    ab1 = Light(screen, ab_outer_coordinates, 'AB', 'outer')
-    cd1 = Light(screen, cd_outer_coordinates, 'CD', 'outer')
-    a2 = Light(screen, a_middle_coordinates, 'A', 'middle')
-    a3 = Light(screen, a_inner_coordinates, 'A', 'inner')
-    b2 = Light(screen, b_middle_coordinates, 'B', 'middle')
-    b3 = Light(screen, b_inner_coordinates, 'B', 'inner')
-    c2 = Light(screen, c_middle_coordinates, 'C', 'middle')
-    c3 = Light(screen, c_inner_coordinates, 'C', 'inner')
-    d2 = Light(screen, d_middle_coordinates, 'D', 'middle')
-    d3 = Light(screen, d_inner_coordinates, 'D', 'inner')
 
     colour_cycle = cycle(Colour.colour_list)
     
-    for _ in range(1,10):
-        for light in Light.inner_list:
-            Light.turn_on(light, inner_colour)
-        for light in Light.middle_list:
-            Light.turn_on(light, middle_colour)
-        for light in Light.outer_list:
-            Light.turn_on(light, outer_colour)
-        pygame.display.flip()
-        pygame.time.wait(250)
-        outer_colour = middle_colour
-        middle_colour = inner_colour
-        inner_colour = next(colour_cycle)
-
-        
-
+    blink_all(Light.inner_list, blue, 50)
+    # for _ in range(1,10):
+    #     for light in Light.inner_list:
+    #         Light.turn_on(light, inner_colour)
+    #     for light in Light.middle_list:
+    #         Light.turn_on(light, middle_colour)
+    #     for light in Light.outer_list:
+    #         Light.turn_on(light, outer_colour)
+    #     pygame.display.flip()
+    #     pygame.time.wait(50)
+    #     outer_colour = middle_colour
+    #     middle_colour = inner_colour
+    #     inner_colour = next(colour_cycle)
 
 pygame.quit()
