@@ -1,7 +1,6 @@
 import pygame
 from pygame.locals import *
-
-GRAY = (128, 128, 128)
+from colours import GRAY
 
 class Light:
     light_list = []
@@ -43,14 +42,6 @@ class Light:
 
     def turn_off(self):
         pygame.draw.polygon(self.surface, GRAY, self.corners, 5)
-
-    def blink_all(light_list, color, time_between):
-        for light in light_list:
-            Light.turn_on(light, color)
-        pygame.time.wait(time_between)
-        for light in light_list:
-            Light.turn_on(light, color)
-        pygame.time.wait(time_between)
 
     
 

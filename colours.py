@@ -1,8 +1,11 @@
 from itertools import cycle
-import pygame
 from pygame.locals import *
 
+#Background & "light-off" color constants
+BLACK = (0, 0, 0)
+GRAY = (128, 128, 128)
 
+#child of pygame Color class to append new color objects to a list of all colors on initialization
 class Colour(Color):
     colour_list = []
 
