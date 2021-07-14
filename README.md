@@ -4,7 +4,8 @@ Sunburst is a Python console application for building and testing ideas for a li
 
 ## Background
 ![Studio 54 Sunburst](/sunburst7.jpg "Studio 54 Sunburst")
-While working on modifying the above installation by artist Erika Margaret to control 10 sections of RGB LED lights, I wanted to test different effects without using the actual installation and its hardware. The screen display shows 10 shapes that are in the same configuration as the planned lighting for this installation.
+While working on modifying the above installation by artist Erika Margaret to control 10 sections of RGB LED lights, I wanted to test different effects without using the actual installation and its hardware. The screen display shows 10 shapes that are in the same configuration as the planned lighting for this installation, mapped using coordinates read from a csv file and rendered using the PyGame library.
+
 
 This project has also served to learn Python and practice Object Oriented Programming.
 
