@@ -29,7 +29,6 @@ screen = pygame.display.set_mode((width, height))
 running = True
 screen.fill(BLACK)
 print('Type 1, 2, or 3 to watch different light shows. ESC to quit.')
-print(Fore.RED + 'This text is red in color')
 
 #create light shapes
 ab1 = Light(screen, list_of_coordinates_lists[0], 'AB', 'top')

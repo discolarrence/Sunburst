@@ -14,7 +14,7 @@ Sunburst is part of a larger project to modify the above installation by artist 
 - The output of these scripts can be viewed on the PyGame screen.
 
 2. As this project is a collaborative effort between myself and the artist, and has also recieved input from other artists in our collective, I wanted a simple way to communicate my ideas to collaborators. 
-- By assigning lighting effect functions to keys, each effect can be shown with one kep press from the console.
+- By assigning lighting effect functions to keys, each effect can be shown with one key press from the console.
 
 ## Required Features
 This project has also served to learn Python and practice Object Oriented Programming. It meets the requirements for the final project in my Code Louisville Python class.
