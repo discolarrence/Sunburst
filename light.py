@@ -41,6 +41,7 @@ class Light:
 
     def turn_off(self):
         pygame.draw.polygon(self.surface, GRAY, self.corners, 5)
+        pygame.display.flip()
 
     
 

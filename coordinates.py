@@ -19,7 +19,7 @@ while counter < len(coordinates_rows_list):
             y_coordinate = int(coordinates_rows_list[counter + 1][i])
             #ignores duplicate coordinate sets for each shape--int() was converting empty strings to the previous cell's value
             coordinates_set.append((x_coordinate, y_coordinate)) if (x_coordinate, y_coordinate) not in coordinates_set else None
-        # ignore values that can't be converted to a list
+        # ignore values that can't be converted to an int
         except ValueError:
             pass     
     list_of_coordinates_lists.append(coordinates_set)

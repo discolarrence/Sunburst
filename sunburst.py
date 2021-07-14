@@ -1,11 +1,10 @@
 import pygame
 from coordinates import list_of_coordinates_lists
-from colours import Colour, BLACK, GRAY
+from colours import Colour, BLACK
 from light import Light
 from lightshows import *
 from pygame.locals import *
 
-# create color objects
 white = Colour(255, 255, 255)
 fuchsia = Colour(255, 0, 255)
 salmon = Colour(255, 0, 128)
@@ -28,6 +27,7 @@ pygame.init()
 width, height = 1200, 480
 screen = pygame.display.set_mode((width, height))
 running = True
+screen.fill(BLACK)
 
 #create light shapes
 ab1 = Light(screen, list_of_coordinates_lists[0], 'AB', 'top')
@@ -56,7 +56,8 @@ while running:
 
         elif event.type == QUIT:
             running = False
-    
-    screen.fill(BLACK)
+
+        for light in Light.light_list:
+            Light.turn_off(light)
 
 pygame.quit()

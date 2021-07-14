@@ -3,7 +3,7 @@ from pygame.locals import *
 
 #Background & "light-off" color constants
 BLACK = (0, 0, 0)
-GRAY = (128, 128, 128)
+GRAY = (50, 50, 50)
 
 #child of pygame Color class to append new color objects to a list of all colors on initialization
 class Colour(Color):
