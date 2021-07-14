@@ -36,8 +36,6 @@ git clone https://github.com/discolarrence/sunburst.git
 Install/update necessary libraries
 ```
 pip install 'pygame==2.0.1'
-pip install itertools
-pip install csv
 ```
 Run application.
 ```
