@@ -4,28 +4,31 @@ from itertools import cycle
 from light import Light
 from pygame.locals import *
 
-def colour_cycle_levels(colour_list, reps, time_between):
-    inner_colour = middle_colour = outer_colour = GRAY
+def screen_update_and_wait(wait_time):
+    pygame.display.flip()
+    pygame.time.wait(wait_time)
+
+def colour_cycle_levels(colour_list, reps, wait_time):
+    bottom_colour = middle_colour = top_colour = GRAY
     colour_cycle = cycle(colour_list)
     for _ in range(0, reps):
-        for light in Light.inner_list:
-            Light.turn_on(light, inner_colour)
+        for light in Light.bottom_list:
+            Light.turn_on(light, bottom_colour)
         for light in Light.middle_list:
             Light.turn_on(light, middle_colour)
-        for light in Light.outer_list:
-            Light.turn_on(light, outer_colour)
-        pygame.display.flip()
-        pygame.time.wait(time_between)
-        outer_colour = middle_colour
-        middle_colour = inner_colour
-        inner_colour = next(colour_cycle)
+        for light in Light.top_list:
+            Light.turn_on(light, top_colour)
+        screen_update_and_wait(wait_time)
+        top_colour = middle_colour
+        middle_colour = bottom_colour
+        bottom_colour = next(colour_cycle)
 
-def colour_cycle_inside_out(colour_list, reps, time_between):
-    inside_colour = outside_colour = outer_colour = GRAY
+def colour_cycle_inside_out(colour_list, reps, wait_time):
+    inside_colour = outside_colour = top_colour = GRAY
     colour_cycle = cycle(colour_list)
     for _ in range(0, reps):
-        for light in Light.outer_list:
-            Light.turn_on(light, outer_colour)
+        for light in Light.top_list:
+            Light.turn_on(light, top_colour)
         for light in Light.a_list:
             Light.turn_on(light, outside_colour)
         for light in Light.d_list:
@@ -34,27 +37,22 @@ def colour_cycle_inside_out(colour_list, reps, time_between):
             Light.turn_on(light, inside_colour)
         for light in Light.c_list:
             Light.turn_on(light, inside_colour)
-        pygame.display.flip()
-        pygame.time.wait(time_between)
-        outer_colour = outside_colour
+        screen_update_and_wait(wait_time)
+        top_colour = outside_colour
         outside_colour = inside_colour
         inside_colour = next(colour_cycle)
 
-def colour_cycle_build_levels(colour_list, reps, time_between):
+def colour_cycle_build_levels(colour_list, reps, wait_time):
     colour = GRAY
     colour_cycle = cycle(colour_list)
     for _ in range(0, reps):
-        for light in Light.inner_list:
+        for light in Light.bottom_list:
             Light.turn_on(light, colour)
-        pygame.display.flip()
-        pygame.time.wait(time_between)
+        screen_update_and_wait(wait_time)
         for light in Light.middle_list:
             Light.turn_on(light, colour)
-        pygame.display.flip()
-        pygame.time.wait(time_between)
-        for light in Light.outer_list:
+        screen_update_and_wait(wait_time)
+        for light in Light.top_list:
             Light.turn_on(light, colour)
-        pygame.display.flip()
-        pygame.time.wait(time_between)
+        screen_update_and_wait(wait_time)
         colour = next(colour_cycle)
-    

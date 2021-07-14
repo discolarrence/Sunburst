@@ -1,6 +1,6 @@
 import pygame
 from coordinates import list_of_coordinates_lists
-from colours import Colour, BLACK
+from colours import Colour, BLACK, GRAY
 from light import Light
 from lightshows import *
 from pygame.locals import *
@@ -30,16 +30,16 @@ screen = pygame.display.set_mode((width, height))
 running = True
 
 #create light shapes
-ab1 = Light(screen, list_of_coordinates_lists[0], 'AB', 'outer')
-cd1 = Light(screen, list_of_coordinates_lists[1], 'CD', 'outer')
-a2 = Light(screen, list_of_coordinates_lists[2], 'A', 'middle')
-a3 = Light(screen, list_of_coordinates_lists[3], 'A', 'inner')
+ab1 = Light(screen, list_of_coordinates_lists[0], 'AB', 'top')
+cd1 = Light(screen, list_of_coordinates_lists[1], 'CD', 'top')
+a2 = Light(screen, list_of_coordinates_lists[2], 'A', 'middle') 
+a3 = Light(screen, list_of_coordinates_lists[3], 'A', 'bottom')
 b2 = Light(screen, list_of_coordinates_lists[4], 'B', 'middle')
-b3 = Light(screen, list_of_coordinates_lists[5], 'B', 'inner')
+b3 = Light(screen, list_of_coordinates_lists[5], 'B', 'bottom')
 c2 = Light(screen, list_of_coordinates_lists[6], 'C', 'middle')
-c3 = Light(screen, list_of_coordinates_lists[7], 'C', 'inner')
+c3 = Light(screen, list_of_coordinates_lists[7], 'C', 'bottom')
 d2 = Light(screen, list_of_coordinates_lists[8], 'D', 'middle')
-d3 = Light(screen, list_of_coordinates_lists[9], 'D', 'inner')
+d3 = Light(screen, list_of_coordinates_lists[9], 'D', 'bottom')
 
 #start lightshow
 while running:
@@ -57,7 +57,6 @@ while running:
         elif event.type == QUIT:
             running = False
     
-    #default screen
     screen.fill(BLACK)
 
 pygame.quit()
