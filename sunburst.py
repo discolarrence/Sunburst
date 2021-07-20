@@ -1,6 +1,7 @@
 import pygame
+from button import Button
 from coordinates import list_of_coordinates_lists
-from colours import Colour, BLACK
+from colours import Colour, BLACK, WHITE
 from light import Light
 from lightshows import *
 from pygame.locals import *
@@ -24,11 +25,11 @@ purple = Colour(128, 0, 128)
 
 #set up surface & terminal instructions
 pygame.init()
-width, height = 1200, 480
+width, height = 1200, 750
 screen = pygame.display.set_mode((width, height))
 running = True
 screen.fill(BLACK)
-print('Type 1, 2, or 3 to watch different light shows. ESC to quit.')
+pygame.display.set_caption('Sunburst')
 
 #create light shapes
 ab1 = Light(screen, list_of_coordinates_lists[0], 'AB', 'top')
@@ -41,6 +42,10 @@ c2 = Light(screen, list_of_coordinates_lists[6], 'C', 'middle')
 c3 = Light(screen, list_of_coordinates_lists[7], 'C', 'bottom')
 d2 = Light(screen, list_of_coordinates_lists[8], 'D', 'middle')
 d3 = Light(screen, list_of_coordinates_lists[9], 'D', 'bottom')
+
+#create buttons
+button_one = Button(screen, WHITE, 100, 600, 100, 50)
+Button.make_button(button_one, "ONE")
 
 #start lightshow
 while running:
