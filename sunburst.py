@@ -1,5 +1,5 @@
 import pygame
-from button import Button
+from button import Button, LightshowButton
 from coordinates import list_of_coordinates_lists
 from colours import Colour, BLACK, WHITE
 from light import Light
@@ -44,8 +44,11 @@ d2 = Light(screen, list_of_coordinates_lists[8], 'D', 'middle')
 d3 = Light(screen, list_of_coordinates_lists[9], 'D', 'bottom')
 
 #create buttons
-button_one = Button(screen, WHITE, 100, 600, 100, 50)
-Button.make_button(button_one, "ONE")
+LightshowButton(screen, "ONE", 50, 600)
+LightshowButton(screen, "TWO", 200, 600)
+LightshowButton(screen, "THREE", 350, 600)
+LightshowButton(screen, "FOUR", 500, 600)
+LightshowButton(screen, "FIVE", 650, 600)
 
 #start lightshow
 while running:
