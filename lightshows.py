@@ -22,6 +22,7 @@ def colour_cycle_levels(colour_list, reps, wait_time):
         top_colour = middle_colour
         middle_colour = bottom_colour
         bottom_colour = next(colour_cycle)
+    
 
 def colour_cycle_inside_out(colour_list, reps, wait_time):
     inside_colour = outside_colour = top_colour = GRAY

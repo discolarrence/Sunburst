@@ -44,11 +44,11 @@ d2 = Light(screen, list_of_coordinates_lists[8], 'D', 'middle')
 d3 = Light(screen, list_of_coordinates_lists[9], 'D', 'bottom')
 
 #create buttons
-LightshowButton(screen, "ONE", 50, 600)
-LightshowButton(screen, "TWO", 200, 600)
-LightshowButton(screen, "THREE", 350, 600)
-LightshowButton(screen, "FOUR", 500, 600)
-LightshowButton(screen, "FIVE", 650, 600)
+LightshowButton("rainbow levels fast", 50, 600, colour_cycle_levels(Colour.colour_list, 5, 50))
+LightshowButton("rainbow in>out med", 250, 600, colour_cycle_inside_out(Colour.colour_list, 5, 150))
+LightshowButton("rainbow build levels slow", 450, 600, colour_cycle_build_levels(Colour.colour_list, 5, 250))
+
+LightshowButton.button_list.draw(screen)
 
 #start lightshow
 while running:
@@ -57,11 +57,11 @@ while running:
             if event.key == K_ESCAPE:
                 running = False
             elif event.key == K_1:
-                colour_cycle_levels(Colour.colour_list, 160, 50)
+                colour_cycle_levels(Colour.colour_list, 48, 50)
             elif event.key == K_2:
-                colour_cycle_inside_out(Colour.colour_list, 160, 150)
+                colour_cycle_inside_out(Colour.colour_list, 48, 150)
             elif event.key == K_3:
-                colour_cycle_build_levels(Colour.colour_list, 160, 250)
+                colour_cycle_build_levels(Colour.colour_list, 48, 250)
 
         elif event.type == QUIT:
             running = False

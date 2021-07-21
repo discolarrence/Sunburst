@@ -1,32 +1,30 @@
 import pygame
 from colours import BLACK, WHITE
 
-class Button:
-    button_list = []
+class Button(pygame.sprite.Sprite):
+    button_list = pygame.sprite.Group()
     
-    def __init__(self, surface, text:str, position_x:int, position_y:int, width:int, height:int, color):
-        self.surface = surface
-        self.text = text
-        self.color = color
-        self.position_x = position_x
-        self.position_y = position_y
-        self.width = width
-        self.height = height
-        self.outline = [position_x, position_y, width, height]
-
-        Button.button_list.append(self)
-
-        pygame.draw.rect(self.surface, self.color, self.outline)
-        button_font = pygame.font.Font(pygame.font.get_default_font(), 20)
+    def __init__(self, text:str, x:int, y:int, width:int, height:int, color, action):
+        super().__init__()
+        self.image= pygame.Surface((width, height))
+        self.image.fill(color)
+        self.rect = self.image.get_rect()
+        button_font = pygame.font.Font(None, 15)
         button_text = button_font.render(text, True, BLACK)
-        button_text_shape = button_text.get_rect()
-        button_text_shape.center = ( (self.position_x+(self.width/2)), 
-                                (self.position_y+(self.height/2)) )
-        self.surface.blit(button_text, button_text_shape)
-        pygame.display.update
+        button_text_rect = button_text.get_rect(center = self.rect.center)
+        self.image.blit(button_text, button_text_rect)
+        self.rect.topleft = x, y
+        self.action = action
 
+        Button.button_list.add(self)
+
+    # def is_clicked(self, event):
+    #     if event.type == pygame.MOUSEBUTTONDOWN:
+    #         if self.rect.collidepoint(event.pos):
+    #             return True
+    #     return False
 
 class LightshowButton(Button):
-    def __init__(self, surface, text:str, position_x:int, position_y:int):
-        super().__init__(surface, text, position_x, position_y, 100, 50, WHITE)
+    def __init__(self, text:str, x:int, y:int, action):
+        super().__init__(text, x, y, 150, 50, WHITE, action)
     
