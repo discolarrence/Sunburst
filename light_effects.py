@@ -4,11 +4,11 @@ from itertools import cycle
 from light import Light
 from pygame.locals import *
 
-def screen_update_and_wait(wait_time):
+def screen_update_and_wait(wait_time: int):
     pygame.display.flip()
     pygame.time.wait(wait_time)
 
-def colour_cycle_levels(colour_list, reps, wait_time):
+def colour_cycle_levels(colour_list: list, reps: int, wait_time: int):
     bottom_colour = middle_colour = top_colour = GRAY
     colour_cycle = cycle(colour_list)
     for _ in range(0, reps):
@@ -24,7 +24,7 @@ def colour_cycle_levels(colour_list, reps, wait_time):
         bottom_colour = next(colour_cycle)
     
 
-def colour_cycle_inside_out(colour_list, reps, wait_time):
+def colour_cycle_inside_out(colour_list: list, reps: int, wait_time: int):
     inside_colour = outside_colour = top_colour = GRAY
     colour_cycle = cycle(colour_list)
     for _ in range(0, reps):
@@ -43,7 +43,7 @@ def colour_cycle_inside_out(colour_list, reps, wait_time):
         outside_colour = inside_colour
         inside_colour = next(colour_cycle)
 
-def colour_cycle_build_levels(colour_list, reps, wait_time):
+def colour_cycle_build_levels(colour_list: list, reps: int, wait_time: int):
     colour = GRAY
     colour_cycle = cycle(colour_list)
     for _ in range(0, reps):

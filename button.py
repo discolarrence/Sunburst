@@ -18,11 +18,11 @@ class Button(pygame.sprite.Sprite):
 
         Button.button_list.add(self)
 
-    # def is_clicked(self, event):
-    #     if event.type == pygame.MOUSEBUTTONDOWN:
-    #         if self.rect.collidepoint(event.pos):
-    #             return True
-    #     return False
+    def is_clicked(self, event):
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if self.rect.collidepoint(event.pos):
+                self.action()
+        return False
 
 class LightshowButton(Button):
     def __init__(self, text:str, x:int, y:int, action):

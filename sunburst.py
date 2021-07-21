@@ -3,7 +3,7 @@ from button import Button, LightshowButton
 from coordinates import list_of_coordinates_lists
 from colours import Colour, BLACK, WHITE
 from light import Light
-from lightshows import *
+from light_effects import *
 from pygame.locals import *
 
 white = Colour(255, 255, 255)
@@ -43,10 +43,32 @@ c3 = Light(screen, list_of_coordinates_lists[7], 'C', 'bottom')
 d2 = Light(screen, list_of_coordinates_lists[8], 'D', 'middle')
 d3 = Light(screen, list_of_coordinates_lists[9], 'D', 'bottom')
 
+#create light shows
+def rainbow_levels_fast():
+    colour_cycle_levels(Colour.colour_list, 16, 50)
+
+def rainbow_in_to_out_med():
+    colour_cycle_inside_out(Colour.colour_list, 16, 150)
+
+def rainbow_build_levels_slow():
+    colour_cycle_build_levels(Colour.colour_list, 16, 250)
+
+def red_levels_med():
+    colour_cycle_levels(Colour.red_list, 18, 150)
+
+def blue_levels_med():
+    colour_cycle_levels(Colour.blue_list, 18, 150)
+
+def green_levels_med():
+    colour_cycle_levels(Colour.green_list, 18, 150)
+
 #create buttons
-LightshowButton("rainbow levels fast", 50, 600, colour_cycle_levels(Colour.colour_list, 5, 50))
-LightshowButton("rainbow in>out med", 250, 600, colour_cycle_inside_out(Colour.colour_list, 5, 150))
-LightshowButton("rainbow build levels slow", 450, 600, colour_cycle_build_levels(Colour.colour_list, 5, 250))
+LightshowButton("rainbow levels fast", 25, 600, rainbow_levels_fast)
+LightshowButton("rainbow in>out med", 225, 600, rainbow_in_to_out_med)
+LightshowButton("rainbow build levels slow", 425, 600, rainbow_build_levels_slow)
+LightshowButton("red levels med", 620, 600, red_levels_med)
+LightshowButton("green levels med", 825, 600, green_levels_med)
+LightshowButton("blue levels med", 1025, 600, blue_levels_med)
 
 LightshowButton.button_list.draw(screen)
 
@@ -56,12 +78,10 @@ while running:
         if event.type == KEYDOWN:
             if event.key == K_ESCAPE:
                 running = False
-            elif event.key == K_1:
-                colour_cycle_levels(Colour.colour_list, 48, 50)
-            elif event.key == K_2:
-                colour_cycle_inside_out(Colour.colour_list, 48, 150)
-            elif event.key == K_3:
-                colour_cycle_build_levels(Colour.colour_list, 48, 250)
+        
+        elif event.type == MOUSEBUTTONDOWN:
+            for button in LightshowButton.button_list:
+                button.is_clicked(event)
 
         elif event.type == QUIT:
             running = False
