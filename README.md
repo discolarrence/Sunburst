@@ -1,6 +1,6 @@
 # Sunburst
 
-Sunburst is a Python console application for building and testing ideas for a lightshow.
+Sunburst is a Python program used for building and testing ideas for a lightshow.
 
 ## Background
 ![Studio 54 Sunburst](/sunburst7.jpg "Studio 54 Sunburst by Erika Margaret")
