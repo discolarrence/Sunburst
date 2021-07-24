@@ -24,3 +24,5 @@ while counter < len(coordinates_rows_list):
             pass     
     list_of_coordinates_lists.append(coordinates_set)
     counter += 2
+
+    print(list_of_coordinates_lists)

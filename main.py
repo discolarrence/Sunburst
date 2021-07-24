@@ -6,6 +6,7 @@ from light import Light
 from light_effects import *
 from pygame.locals import *
 
+#create color objects
 white = Colour(255, 255, 255)
 fuchsia = Colour(255, 0, 255)
 salmon = Colour(255, 0, 128)
@@ -23,7 +24,7 @@ blue = Colour(0, 0, 255)
 lt_purple = Colour(128, 0, 255)
 purple = Colour(128, 0, 128)
 
-#set up surface & terminal instructions
+#set up surface
 pygame.init()
 width, height = 1200, 750
 screen = pygame.display.set_mode((width, height))

@@ -23,7 +23,6 @@ This project has also served to learn Python and practice Object Oriented Progra
 2. Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program.
 3. Read data from an external file, such as text, JSON, CSV, etc and use that data in your application.
 4. Visualize data in a graph, chart, or other visual representation of data.
-5. Create and call at least 3 functions or methods, at least one of which must return a value that is used somewhere else in your code. 
 
 ## Usage
 
@@ -39,7 +38,7 @@ pip install 'pygame==2.0.1'
 ```
 Run application.
 ```
-python sunburst.py
+python main.py
 ```
 The PyGame window will open.
 ![PyGame window](/pygame_window.png "Sunburst in PyGame Window")
