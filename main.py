@@ -1,6 +1,6 @@
 import pygame
 from button import Button, LightshowButton
-from coordinates import coordinates_list
+from coordinates import light_shape_corner_coordinates
 from colours import Colour, BLACK, WHITE
 from light import Light
 from light_effects import *
@@ -33,16 +33,16 @@ screen.fill(BLACK)
 pygame.display.set_caption('Sunburst--Click buttons for light effect demo. Close window or ESC to quit.')
 
 #create light shapes
-ab1 = Light(screen, coordinates_list[0], 'AB', 'top')
-cd1 = Light(screen, coordinates_list[1], 'CD', 'top')
-a2 = Light(screen, coordinates_list[2], 'A', 'middle') 
-b2 = Light(screen, coordinates_list[3], 'B', 'middle')
-c2 = Light(screen, coordinates_list[4], 'C', 'middle')
-d2 = Light(screen, coordinates_list[5], 'D', 'middle')
-a3 = Light(screen, coordinates_list[6], 'A', 'bottom')
-b3 = Light(screen, coordinates_list[7], 'B', 'bottom')
-c3 = Light(screen, coordinates_list[8], 'C', 'bottom')
-d3 = Light(screen, coordinates_list[9], 'D', 'bottom')
+ab1 = Light(screen, light_shape_corner_coordinates[0], 'AB', 'top')
+cd1 = Light(screen, light_shape_corner_coordinates[1], 'CD', 'top')
+a2 = Light(screen, light_shape_corner_coordinates[2], 'A', 'middle') 
+b2 = Light(screen, light_shape_corner_coordinates[3], 'B', 'middle')
+c2 = Light(screen, light_shape_corner_coordinates[4], 'C', 'middle')
+d2 = Light(screen, light_shape_corner_coordinates[5], 'D', 'middle')
+a3 = Light(screen, light_shape_corner_coordinates[6], 'A', 'bottom')
+b3 = Light(screen, light_shape_corner_coordinates[7], 'B', 'bottom')
+c3 = Light(screen, light_shape_corner_coordinates[8], 'C', 'bottom')
+d3 = Light(screen, light_shape_corner_coordinates[9], 'D', 'bottom')
 
 #create light shows
 def rainbow_levels_fast():
