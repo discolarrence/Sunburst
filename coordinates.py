@@ -1,28 +1,26 @@
-import csv
+import pandas as pd
 
-with open("sunburst_coordinates_2.csv") as coordinates_file:
-    coordinates_rows = csv.reader(coordinates_file)
-    coordinates_rows_list = list(coordinates_rows)
+df = pd.read_csv('sunburst_coordinates_2.csv', header=None)
+df = df.T
+df.columns = df.iloc[0]
+df = df.drop(df.index[0])
 
-#merge rows into lists of x&y coordinates for each shape
-#empty master list of all shape coordinates
-list_of_coordinates_lists = []
-counter = 0
-#loop to append eash shape's list of coordinates to the master list
-while counter < len(coordinates_rows_list):
-    #empty list for coordinates for each shape
-    coordinates_set = []
-    #loop to append coordinates to a shape's list
-    for i in range(0, len(coordinates_rows_list[counter])):
-        try:
-            x_coordinate = int(coordinates_rows_list[counter][i])
-            y_coordinate = int(coordinates_rows_list[counter + 1][i])
-            #ignores duplicate coordinate sets for each shape--int() was converting empty strings to the previous cell's value
-            coordinates_set.append((x_coordinate, y_coordinate)) if (x_coordinate, y_coordinate) not in coordinates_set else None
-        # ignore values that can't be converted to an int
-        except ValueError:
-            pass     
-    list_of_coordinates_lists.append(coordinates_set)
-    counter += 2
+df_level_one = df.loc[:, df.columns.str.contains('1')].astype(int)
+df_level_two = df.loc[:, df.columns.str.contains('2')].astype(int)
+df_level_three = df.loc[:, df.columns.str.contains('3')].dropna(axis=0).astype(int)
 
-    print(list_of_coordinates_lists)
+coordinates_list = []
+
+def make_coordinates_list(dataframe):
+    number_of_columns = len(dataframe.columns)
+    counter = 0
+    while counter < number_of_columns:
+        x_value_index = counter
+        y_value_index = counter + 1
+        light_shape_coordinates= list(zip(dataframe.iloc[:, x_value_index], dataframe.iloc[:, y_value_index]))
+        coordinates_list.append(light_shape_coordinates)
+        counter += 2
+
+make_coordinates_list(df_level_one)
+make_coordinates_list(df_level_two)
+make_coordinates_list(df_level_three)

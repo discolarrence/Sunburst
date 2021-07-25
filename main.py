@@ -1,6 +1,6 @@
 import pygame
 from button import Button, LightshowButton
-from coordinates import list_of_coordinates_lists
+from coordinates import coordinates_list
 from colours import Colour, BLACK, WHITE
 from light import Light
 from light_effects import *
@@ -30,19 +30,19 @@ width, height = 1200, 750
 screen = pygame.display.set_mode((width, height))
 running = True
 screen.fill(BLACK)
-pygame.display.set_caption('Sunburst')
+pygame.display.set_caption('Sunburst--Click buttons for light effect demo. Close window or ESC to quit.')
 
 #create light shapes
-ab1 = Light(screen, list_of_coordinates_lists[0], 'AB', 'top')
-cd1 = Light(screen, list_of_coordinates_lists[1], 'CD', 'top')
-a2 = Light(screen, list_of_coordinates_lists[2], 'A', 'middle') 
-a3 = Light(screen, list_of_coordinates_lists[3], 'A', 'bottom')
-b2 = Light(screen, list_of_coordinates_lists[4], 'B', 'middle')
-b3 = Light(screen, list_of_coordinates_lists[5], 'B', 'bottom')
-c2 = Light(screen, list_of_coordinates_lists[6], 'C', 'middle')
-c3 = Light(screen, list_of_coordinates_lists[7], 'C', 'bottom')
-d2 = Light(screen, list_of_coordinates_lists[8], 'D', 'middle')
-d3 = Light(screen, list_of_coordinates_lists[9], 'D', 'bottom')
+ab1 = Light(screen, coordinates_list[0], 'AB', 'top')
+cd1 = Light(screen, coordinates_list[1], 'CD', 'top')
+a2 = Light(screen, coordinates_list[2], 'A', 'middle') 
+b2 = Light(screen, coordinates_list[3], 'B', 'middle')
+c2 = Light(screen, coordinates_list[4], 'C', 'middle')
+d2 = Light(screen, coordinates_list[5], 'D', 'middle')
+a3 = Light(screen, coordinates_list[6], 'A', 'bottom')
+b3 = Light(screen, coordinates_list[7], 'B', 'bottom')
+c3 = Light(screen, coordinates_list[8], 'C', 'bottom')
+d3 = Light(screen, coordinates_list[9], 'D', 'bottom')
 
 #create light shows
 def rainbow_levels_fast():
