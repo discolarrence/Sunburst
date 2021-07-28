@@ -2,9 +2,7 @@ import pandas as pd
 
 
 def filter_coordinates(dataframe, column_contains: str):
-    """selects all columns with header containing column_contains str.
-    Removes all rows with null values and converts all values to ints.
-    Returns filtered dataframe.
+    """Selects columns with str in header and returns as ints with no nulls.
     """
     filtered = dataframe.loc[:, dataframe.columns.str.contains(column_contains)]
     nulls_removed = filtered.dropna(axis=0)
@@ -13,8 +11,7 @@ def filter_coordinates(dataframe, column_contains: str):
 
 
 def make_coordinates_list(dataframe, coordinates_list):
-    """iterates through dataframe, merging every other column with the column
-    to the right and storing as a list. Appends list to a list of coordinates.
+    """Stores merged columns as list. Appends to coordinates_list.
     """
     number_of_columns = len(dataframe.columns)
     counter = 0

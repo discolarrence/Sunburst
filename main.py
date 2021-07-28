@@ -1,9 +1,8 @@
 import pygame
-from button import Button, LightshowButton
+from button import LightShowButton
 from coordinates import light_shape_corner_coordinates
 from colours import Colour, BLACK, WHITE
-from light import Light
-from light_effects import *
+from light import *
 from pygame.locals import *
 
 #create color objects
@@ -48,11 +47,11 @@ d3 = Light(screen, light_shape_corner_coordinates[9], 'D', 'bottom')
 def rainbow_levels_fast():
     colour_cycle_levels(Colour.colour_list, 16, 50)
 
-def rainbow_in_to_out_med():
-    colour_cycle_inside_out(Colour.colour_list, 16, 150)
+def rainbow_in_to_out_slow():
+    colour_cycle_inside_out(Colour.colour_list, 16, 250)
 
-def rainbow_build_levels_slow():
-    colour_cycle_build_levels(Colour.colour_list, 16, 250)
+def rainbow_build_levels_med():
+    colour_cycle_build_levels(Colour.colour_list, 16, 150)
 
 def red_levels_med():
     colour_cycle_levels(Colour.red_list, 18, 150)
@@ -64,14 +63,14 @@ def green_levels_med():
     colour_cycle_levels(Colour.green_list, 18, 150)
 
 #create buttons
-LightshowButton("rainbow levels fast", 25, 600, rainbow_levels_fast)
-LightshowButton("rainbow in>out med", 225, 600, rainbow_in_to_out_med)
-LightshowButton("rainbow build levels slow", 425, 600, rainbow_build_levels_slow)
-LightshowButton("red levels med", 620, 600, red_levels_med)
-LightshowButton("green levels med", 825, 600, green_levels_med)
-LightshowButton("blue levels med", 1025, 600, blue_levels_med)
+LightShowButton("rainbow levels fast", 25, 600, rainbow_levels_fast)
+LightShowButton("rainbow in>out slow", 425, 600, rainbow_in_to_out_slow)
+LightShowButton("rainbow build levels med", 225, 600, rainbow_build_levels_med)
+LightShowButton("red levels med", 620, 600, red_levels_med)
+LightShowButton("green levels med", 825, 600, green_levels_med)
+LightShowButton("blue levels med", 1025, 600, blue_levels_med)
 
-LightshowButton.button_list.draw(screen)
+LightShowButton.button_list.draw(screen)
 
 #start lightshow
 while running:
@@ -81,7 +80,7 @@ while running:
                 running = False
         
         elif event.type == MOUSEBUTTONDOWN:
-            for button in LightshowButton.button_list:
+            for button in LightShowButton.button_list:
                 button.is_clicked(event)
 
         elif event.type == QUIT:

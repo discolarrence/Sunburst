@@ -24,7 +24,7 @@ class Button(pygame.sprite.Sprite):
                 self.action()
         return False
 
-class LightshowButton(Button):
+class LightShowButton(Button):
     def __init__(self, text:str, x:int, y:int, action):
         super().__init__(text, x, y, 150, 50, WHITE, action)
     
