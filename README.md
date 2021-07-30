@@ -3,7 +3,7 @@
 Sunburst is a Python program used for building and testing ideas for a lightshow.
 
 ## Background
-![Studio 54 Sunburst](/sunburst7.jpg "Studio 54 Sunburst by Erika Margaret")
+![Studio 54 Sunburst](img/sunburst7.jpg "Studio 54 Sunburst by Erika Margaret")
 
 Sunburst is part of a larger project to modify the above installation by artist Erika Margaret to include 10 sections of programmable RGB LED lights. It functions to address two needs:
 
@@ -35,13 +35,14 @@ git clone https://github.com/discolarrence/sunburst.git
 Install/update necessary libraries.
 ```
 pip install 'pygame==2.0.1'
+pip install 'pandas==1.3.0'
 ```
 Run application.
 ```
 python main.py
 ```
 The PyGame window will open.
-![PyGame window](/pygame_window.png "Sunburst in PyGame Window")
+![PyGame window](img/pygame_window.png "Sunburst in PyGame Window")
 Use mouse to click buttons to see each light show effect. To quit, close PyGame window or ESC.
 
 ## Contributing

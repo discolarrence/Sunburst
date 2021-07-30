@@ -1,17 +1,30 @@
 import pandas as pd
 
 
-def filter_coordinates(dataframe, column_contains: str):
-    """Selects columns with str in header and returns as ints with no nulls.
+def filter_coordinates(dataframe, column_header_contains: str):
+    """Select columns with str in header and returns as ints with no nulls.
+
+    Args:
+        dataframe (dataframe): dataframe to filter
+        column_header_contains (str): string to filter dataframe
+
+    Returns:
+        all_ints (dataframe): filtered dataframe with all ints and no nulls
+
     """
-    filtered = dataframe.loc[:, dataframe.columns.str.contains(column_contains)]
+    filtered = dataframe.loc[:, dataframe.columns.str.contains
+                             (column_header_contains)]
     nulls_removed = filtered.dropna(axis=0)
     all_ints = nulls_removed.astype(int)
     return all_ints
 
 
 def make_coordinates_list(dataframe, coordinates_list):
-    """Stores merged columns as list. Appends to coordinates_list.
+    """Store merged columns as list. Appends to coordinates_list.
+
+    Args:
+        dataframe (dataframe): dataframe to merge and convert to list
+        coordinates_list (list): the list coordinates are appended to
     """
     number_of_columns = len(dataframe.columns)
     counter = 0

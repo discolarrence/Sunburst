@@ -5,7 +5,25 @@ from pygame.locals import *
 
 
 class Light:
-    """"""
+    '''
+    Polygon that represents light section
+
+    Args:
+        surface (str): Where the light shape will be drawn
+        corners (list): coordinates in (x, y) format for polygon points
+        section (str): shape's horizontal grouping
+        level (str): shape's vertical grouping
+
+    Attributes:
+        light_list (str): stores all light shapes
+        top_list (str): stores all light shapes in top level
+        middle_list (str): stores all light shapes in middle level
+        bottom_list (str): stores all light shapes in bottom level
+        a_list (str): stores all light shapes in outside left section
+        b_list (str): stores all light shapes in inside left section
+        c_list (str): stores all light shapes in inside right section
+        d_list (str): stores all light shapes in outside right section
+    '''
     light_list = []
     top_list = []
     middle_list = []
@@ -13,16 +31,16 @@ class Light:
     a_list = []
     b_list = []
     c_list = []
-    d_list = [] 
+    d_list = []
 
     def __init__(self, surface, corners, section, level):
         self.surface = surface
         self.corners = corners
         self.section = section
         self.level = level
-        
+
         Light.light_list.append(self)
-        
+
         if self.level == 'top':
             Light.top_list.append(self)
         elif self.level == 'middle':
@@ -46,14 +64,13 @@ class Light:
         pygame.draw.polygon(self.surface, GRAY, self.corners, 5)
         pygame.display.flip()
 
+
 #  light effect functions
 def screen_update_and_wait(wait_time: int):
     """update display contents and wait
 
-    Parameters
-    ----------
-    wait_time : int
-        time to wait in microseconds
+    Args:
+    wait_time ((int): time to wait in microseconds
     """
     pygame.display.flip()
     pygame.time.wait(wait_time)
@@ -62,14 +79,10 @@ def screen_update_and_wait(wait_time: int):
 def colour_cycle_levels(colour_list: list, reps: int, wait_time: int):
     """cycle through list to change light color by level grouping
 
-    Parameters
-    ----------
-    colour_list : list
-        list of colors
-    reps : int
-        number of repetions
-    wait_time : int
-        time to wait in microseconds
+    Args:
+    colour_list (list): list of colors
+    reps (int): number of repetions
+    wait_time (int): time to wait in microseconds
     """
     bottom_colour = middle_colour = top_colour = GRAY
     colour_cycle = cycle(colour_list)
@@ -84,19 +97,15 @@ def colour_cycle_levels(colour_list: list, reps: int, wait_time: int):
         top_colour = middle_colour
         middle_colour = bottom_colour
         bottom_colour = next(colour_cycle)
-    
+
 
 def colour_cycle_inside_out(colour_list: list, reps: int, wait_time: int):
     """cycle through list to change light color from inner to outer sections
 
-    Parameters
-    ----------
-    colour_list : list
-        list of colors
-    reps : int
-        number of repetions
-    wait_time : int
-        time to wait in microseconds
+    Args:
+    colour_list (list): list of colors
+    reps (int): number of repetions
+    wait_time (int): time to wait in microseconds
     """
     inside_colour = outside_colour = top_colour = GRAY
     colour_cycle = cycle(colour_list)
@@ -120,14 +129,10 @@ def colour_cycle_inside_out(colour_list: list, reps: int, wait_time: int):
 def colour_cycle_build_levels(colour_list: list, reps: int, wait_time: int):
     """cycle through list to change level color one level at a time
 
-    Parameters
-    ----------
-    colour_list : list
-        list of colors
-    reps : int
-        number of repetions
-    wait_time : int
-        time to wait in microseconds
+    Args:
+    colour_list (list): list of colors
+    reps (int): number of repetions
+    wait_time (int): time to wait in microseconds
     """
     colour = GRAY
     colour_cycle = cycle(colour_list)
@@ -141,4 +146,4 @@ def colour_cycle_build_levels(colour_list: list, reps: int, wait_time: int):
         for light in Light.top_list:
             Light.turn_on(light, colour)
         screen_update_and_wait(wait_time)
-        colour = next(colour_cycle)    
+        colour = next(colour_cycle)
